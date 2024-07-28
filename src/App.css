@@ -64,7 +64,7 @@
 }
 
 .chat-input {
-  width: 80%;
+  width: 50%;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -72,7 +72,8 @@
 }
 
 .chat-button {
-  width: 20%;
+  width: 80px;
+  margin-left: 10px;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -82,5 +83,29 @@
 }
 
 .chat-button:hover {
+  background-color: #444;
+}
+
+
+.blacklist-input {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.blacklist-button {
+  width: 20%;
+  padding: 10px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.blacklist-button:hover {
   background-color: #444;
 }
