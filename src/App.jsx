@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import * as signalR from '@microsoft/signalr';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+import Chat from './Chat';
 
 function App() {
   const [hubConnection, setHubConnection] = useState(null);
@@ -15,7 +15,7 @@ function App() {
   const [groupName, setGroupName] = useState(null);
   const [groupList, setGrouplist] = useState([]);
   const [grouplistInputVal, setGrouplistInputVal] = useState("");
-  
+
 
   // onreconnecting: Yeniden bağlanma girişimlerini başlatmadan önce tetiklenen fonksiyondur.
   // onreconnected: Yeniden bağlantı gerçekleştirildiğinde tetiklenen fonksiyondur.
@@ -72,14 +72,14 @@ function App() {
 
     };
 
-    createHubConnection();
+    //createHubConnection();
 
   }, []);
 
 
   const sendMessage = () => {
     // hubConnection.invoke("SendMessageAsync", text, blacklist).catch((error) => toast.error(`Hata: ${error}`));
-     hubConnection.invoke("SendMessageAsync", text, groupName).catch((error) => toast.error(`Hata: ${error}`));
+    hubConnection.invoke("SendMessageAsync", text, groupName).catch((error) => toast.error(`Hata: ${error}`));
     // hubConnection.invoke("SendMessageAsync", text, groupName, blacklist).catch((error) => toast.error(`Hata: ${error}`));
     //hubConnection.invoke("SendMessageAsync", text, groupList).catch((error) => toast.error(`Hata: ${error}`));
   }
@@ -87,7 +87,7 @@ function App() {
   const joinGroup = () => {
     hubConnection.invoke("AddGroupAsync", groupName, connectionId).catch((error) => toast.error(`Hata: ${error}`));
   }
-  return (
+  /*return (
     <div className="chat-container">
       <ToastContainer />
       <div className="chat-sidebar">
@@ -103,9 +103,9 @@ function App() {
 
 
         <h3>Gruplar</h3>
-        <input type="radio" name="group" value="A" onChange={(e) => setGroupName(e.target.value)}/>A <br />
-        <input type="radio" name="group" value="B" onChange={(e) => setGroupName(e.target.value)}/>B <br />
-        <input type="radio" name="group" value="C" onChange={(e) => setGroupName(e.target.value)}/>C <br />
+        <input type="radio" name="group" value="A" onChange={(e) => setGroupName(e.target.value)} />A <br />
+        <input type="radio" name="group" value="B" onChange={(e) => setGroupName(e.target.value)} />B <br />
+        <input type="radio" name="group" value="C" onChange={(e) => setGroupName(e.target.value)} />C <br />
         <button onClick={joinGroup}>Gruba gir</button>
 
         <h3>Kara Liste Kullanıcılar</h3>
@@ -117,11 +117,11 @@ function App() {
           onChange={(e) => setBlacklistInputVal(e.target.value)}
           placeholder="Bağlantı Kimliği"
         />
-        <button className="blacklist-button" onClick={() => {setBlacklist(prev => [blacklistInputVal, ...prev]), setBlacklistInputVal("")}}>
+        <button className="blacklist-button" onClick={() => { setBlacklist(prev => [blacklistInputVal, ...prev]), setBlacklistInputVal("") }}>
           Ekle
         </button>
 
-        <h3 style={{marginTop: 10}}>Toplu Grup Mesajı Gönder</h3>
+        <h3 style={{ marginTop: 10 }}>Toplu Grup Mesajı Gönder</h3>
         <input
           id='blacklist-input'
           type="text"
@@ -130,7 +130,7 @@ function App() {
           onChange={(e) => setGrouplistInputVal(e.target.value)}
           placeholder="Grup Adı"
         />
-        <button className="blacklist-button" onClick={() => {setGrouplist(prev => [grouplistInputVal, ...prev]), setGrouplistInputVal("")}}>
+        <button className="blacklist-button" onClick={() => { setGrouplist(prev => [grouplistInputVal, ...prev]), setGrouplistInputVal("") }}>
           Ekle
         </button>
         <ul>
@@ -168,6 +168,10 @@ function App() {
       </div>
     </div>
   );
+  */
+ return (
+  <Chat />
+ );
 }
 
 export default App;
